@@ -1,0 +1,70 @@
+
+body{
+    box-sizing: border-box;
+    font-family: "Segoe UI", "Roboto";
+    background-color: #152238;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+#button-container{
+    flex: 0.3
+}
+#search-field{
+    font-family: inherit;
+    width: 300px;
+    border: 0;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+}
+#search-field::placeholder {
+  color:white;
+  font-size: 20px;  
+  padding: 10px;
+  opacity: 0.7; 
+}
+
+#container{
+    background: linear-gradient(45deg, #2193b0, #5f2c82);
+    margin-top: 50px;
+    flex:0.7;
+    min-height: 500px;
+    height: 600px;
+    width: 800px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+#web-table{
+    width: 800px;
+    border-collapse: collapse;  /* turns table into single border */
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+th{
+    font-weight: bold;
+}
+td{
+    font-weight: 100;
+}
+
+th,td {
+	padding: 15px;
+	background-color: rgba(255,255,255,0.2);
+    color: #d8d8d8;
+}
+th {
+	text-align: left;
+}
+thead > tr> th {	
+    background-color: #55608f;
+}
+tbody > tr:hover {
+	background-color: rgba(255,255,255,0.3);
+}
+
