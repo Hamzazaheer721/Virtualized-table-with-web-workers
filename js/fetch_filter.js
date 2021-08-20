@@ -25,7 +25,7 @@ const buildTable = (__data) => {
 // //filtering 
 var input = document.getElementById("search-field");
 document.getElementById('search-field').addEventListener("keyup", ()=>{ 
-  worker.postMessage([input.value,jsonData,"filter"])
+  worker.postMessage([input.value,jsonData])
   worker.onmessage = function(e){    
     if(e.data[1] === 'filter'){
       let _data = e.data[0];
