@@ -2,6 +2,7 @@ var worker = new Worker('/dist/worker.js')
 var pagination_element = document.getElementById('pagination')
 var table = document.getElementById("data");
 var input = document.getElementById("search-field");
+var selector = document.getElementById("drop-down")
 
 let jsonData;
 let GlobalData;
@@ -14,11 +15,15 @@ let data_length;
 fetch('/json/generated.json').then((res) => {
   return res.json();
 }).then(data => {
-  // jsonData = data;
-  // buildTable(data);
   paginatedTable(data,rows_number,1,true)
 })
 
+// Select options
+selector.addEventListener('click', ()=>{
+  var getVal = document.getElementById("drop-down").selectedOptions[0].value;
+  rows_number = String(getVal);
+  paginatedTable(GlobalData, rows_number, currentPage, true)
+})
 
 //setupPagination
 const SetupPagination = (data, pagination_element, rows_number) =>{
@@ -48,7 +53,6 @@ const paginatedTable = (_data, rows_number, currentPage, firstBuild) => {
   let startIndex = rows_number * (currentPage - 1);
   let endIndex = startIndex + rows_number;
   let paginated_data = _data.slice(startIndex, endIndex);
-  console.log(rows_number, (currentPage - 1))
   jsonData = paginated_data; //for filter
   worker.postMessage([paginated_data])
   worker.onmessage = function (e) {
