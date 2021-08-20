@@ -19,6 +19,7 @@ fetch('/json/generated.json').then((res) => {
   paginatedTable(data,rows_number,1,true)
 })
 
+
 //setupPagination
 const SetupPagination = (data, pagination_element, rows_number) =>{
   pagination_element.innerHTML = "";
