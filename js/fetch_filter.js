@@ -22,6 +22,7 @@ fetch('/json/generated.json').then((res) => {
 selector.addEventListener('click', ()=>{
   var getVal = document.getElementById("drop-down").selectedOptions[0].value;
   rows_number = String(getVal);
+  currentPage = 1;
   paginatedTable(GlobalData, rows_number, currentPage, true)
 })
 
@@ -36,7 +37,7 @@ const SetupPagination = (data, pagination_element, rows_number) =>{
     if(currentPage === i){
       button.classList.add('active')
     }
-    button.addEventListener('click', ()=>{
+    button.addEventListener('click', () =>{
       currentPage = i;
       paginatedTable(data,rows_number,currentPage,true)
     })
