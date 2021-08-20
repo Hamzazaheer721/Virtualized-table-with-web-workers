@@ -31,6 +31,7 @@ const SetupPagination = (data, pagination_element, rows_number) =>{
   let no_of_pages = Math.ceil(data.length/rows_number);
   for(let i = 1 ; i < no_of_pages + 1; i++){
     let button = document.createElement("button")
+    button.setAttribute('id', 'pagination_buttons')
     button.innerText = String(i);
     if(currentPage === i){
       button.classList.add('active')
