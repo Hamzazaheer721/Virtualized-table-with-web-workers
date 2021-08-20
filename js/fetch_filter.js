@@ -13,25 +13,21 @@ fetch('/json/generated.json').then((res) => {
 const buildTable = (__data) => {
   var table = document.getElementById("data");
   table.innerText = "";
-  for (let i = 0; i < __data.length; i++){
-    var row =  `
-    <tr>
-      <td> ${__data[i].age}</td>
-      <td> ${__data[i].name}</td>
-      <td> ${__data[i].gender}</td>         
-      <td> ${__data[i].email}</td> 
-    </tr>  
-    `
-    table.innerHTML += row;
+  worker.postMessage([__data])
+  worker.onmessage = function (e) {
+    if(e.data[1] === "build"){
+      let row = e.data[0];
+      table.innerHTML = row;
+    }
   }
 }
 
 // //filtering 
 var input = document.getElementById("search-field");
 document.getElementById('search-field').addEventListener("keyup", ()=>{ 
-  worker.postMessage([input.value,jsonData])
+  worker.postMessage([input.value,jsonData,"filter"])
   worker.onmessage = function(e){    
-    if(e.data[1] === 'second'){
+    if(e.data[1] === 'filter'){
       let _data = e.data[0];
       buildTable(_data)      
     }

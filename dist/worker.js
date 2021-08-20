@@ -1,13 +1,30 @@
 onmessage = function(e){
-	let dataArray = [];
-	let data = e.data[1];
-	let value = e.data[0];
-	for (let i = 0; i < data.length; i++){
-		value = value.toLowerCase().trim();
-		var name = data[i].name.toLowerCase().trim();
-		if(name.includes(value)){
-			dataArray.push(data[i])
-		}
+	
+	if(e.data.length === 3){
+		let dataArray = [];
+		let value = e.data[0];
+		let data = e.data[1];
+		for (let i = 0; i < data.length; i++){
+				value = value.toLowerCase().trim();
+				var name = data[i].name.toLowerCase().trim();
+				if(name.includes(value)){
+					dataArray.push(data[i])
+				}
+			}
+		postMessage([dataArray,'filter']);
 	}
-	postMessage([dataArray,'second']);
+	else{
+		let data = e.data[0];
+		let row = ""
+		for (let i = 0; i < data.length; i++){
+			row +=  `
+			<tr>
+				<td> ${data[i].age}</td>
+				<td> ${data[i].name}</td>
+				<td> ${data[i].gender}</td>         
+				<td> ${data[i].email}</td> 
+			</tr>`
+		}
+		postMessage([row,'build'])
+	}
 }
