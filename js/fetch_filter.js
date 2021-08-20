@@ -29,6 +29,10 @@ const SetupPagination = (data, pagination_element, rows_number) =>{
     if(currentPage === i){
       button.classList.add('active')
     }
+    button.addEventListener('click', ()=>{
+      currentPage = i;
+      paginatedTable(data,rows_number,currentPage,true)
+    })
     pagination_element.appendChild(button)
   }
 }
