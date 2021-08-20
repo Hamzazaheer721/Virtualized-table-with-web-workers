@@ -1,5 +1,5 @@
 onmessage = function(e){
-	if(e.data.length > 1){
+	if(e.data.length == 2){
 		let dataArray = [];
 		let value = e.data[0];
 		let data = e.data[1];
