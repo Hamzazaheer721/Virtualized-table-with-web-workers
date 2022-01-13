@@ -4,6 +4,7 @@ var table = document.getElementById("data");
 var input = document.getElementById("search-field");
 var selector = document.getElementById("drop-down")
 
+
 let jsonData;
 let GlobalData;
 let rows_number = 60;
